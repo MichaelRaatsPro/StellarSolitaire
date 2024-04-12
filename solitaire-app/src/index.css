@@ -1,0 +1,24 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background-image: url('./images/background.png'); /* Rep lace 'path/to/your/gif.gif' with the actual path to your GIF file */
+  background-size: cover; /* Ensures the GIF covers the entire background */
+  background-repeat: no-repeat; /* Prevents the GIF from repeating */
+  background-attachment: fixed; /* Fixes the background so it doesn't scroll with the content */
+
+
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

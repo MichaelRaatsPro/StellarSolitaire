@@ -1,0 +1,105 @@
+* {
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  user-select: none; 
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  /* display: flex; */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /*font-size: calc(10px + 2vmin);*/
+  color: white;
+}
+
+
+.container {
+  align-items: stretch;
+  justify-content: center;
+  margin: auto;
+  display: flex;
+}
+
+.tableContainer{
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  float: left;
+  color: white;
+  padding: 10px;
+  font-family: Sans-Serif;
+  font-style: italic;
+
+}
+
+.container img {
+  transform-origin: center;
+  animation: MoveUpDown 20s linear infinite;
+}
+
+  @keyframes MoveUpDown {
+    0%, 100% {
+      transform: translateY(5px);
+    }
+    25% {
+      transform: translateX(5px) translateY(-5px) rotateZ(5deg);
+    }
+    50% {
+      transform: translateX(2.5px) translateY(2.5px) rotateZ(2.5deg);
+    }
+    75% {
+      transform: translateX(-5px) translateY(-5px) rotateZ(-5deg);
+    }
+  }
+
+
+.tableGrid{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 columns of equal width */
+    grid-template-rows: 5fr repeat(13, 0.7fr); /* 2 rows with one being 1 third and the 2nd being 2 thirds */
+    grid-auto-rows: 0;
+    grid-auto-columns: 0;
+    grid-auto-flow: none;
+    max-height: 40vw;
+    padding-left: 10vw;
+    padding-right: 10vw; 
+    overflow: hidden;
+}
+
+  
+/* Card container stylings */
+.cardContainer{
+  display: grid; 
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+  border: 2px solid black; /* Border for all sides*/
+  justify-items: center; /*centers the card in the middle of the container
+  /* min-height: auto; */
+}
+
+.cardContainer img{
+  display: block;
+  width: 100%;
+  height: 100%; 
+  max-width: 80%; 
+  max-height: auto; 
+}
+
+.cardContainer p{
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  padding: 10px 20px;
+  font-size: 100px;
+  text-align: center;
+}
