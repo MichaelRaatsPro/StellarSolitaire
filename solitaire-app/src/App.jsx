@@ -40,21 +40,22 @@ function updateTopOfStack(index) {
     <div className= "tableGrid">
     
     
-    {items.map}
+    {/* {items.map} */}
 
     {/* stack 1 */}
-    <Card suit = "alien" cardValue = {1}  updateTopOfStack = {updateTopOfStack} topOfStack={topOfStack}/>
-    <Card suit = "star" cardValue = {11}  updateTopOfStack = {updateTopOfStack} topOfStack={topOfStack}/>
-    <Card suit = "moon" cardValue = {1}  updateTopOfStack = {updateTopOfStack} topOfStack={topOfStack}/>
-    <Card suit = "astronaut" cardValue = {1}  updateTopOfStack = {updateTopOfStack} topOfStack={topOfStack}/>
-    <Card suit = "alien" cardValue = {13}  updateTopOfStack = {updateTopOfStack} topOfStack={topOfStack}/>
+    {/* <Card suit = "alien" cardValue = {13}  updateTopOfStack = {updateTopOfStack} topOfStack={topOfStack}/>
+    <Card suit = "star" cardValue = {1}  updateTopOfStack = {updateTopOfStack} topOfStack={topOfStack}/>
+    <Card suit = "moon" cardValue = {13}  updateTopOfStack = {updateTopOfStack} topOfStack={topOfStack}/>
+    <Card suit = "astronaut" cardValue = {13}  updateTopOfStack = {updateTopOfStack} topOfStack={topOfStack}/>
+    <Card suit = "alien" cardValue = {1}  updateTopOfStack = {updateTopOfStack} topOfStack={topOfStack}/> */}
     {/* stack2 */}
-    <Card suit = "alien" cardValue = {1} stack = {2}  updateTopOfStack = {updateTopOfStack} topOfStack={topOfStack}/>
-    <Card suit = "alien" cardValue = {1} stack = {2}  updateTopOfStack = {updateTopOfStack} topOfStack={topOfStack}/>
+    {/* <Card suit = "alien" cardValue = {1} stack = {2}  updateTopOfStack = {updateTopOfStack} topOfStack={topOfStack}/>
+    <Card suit = "alien" cardValue = {1} stack = {2}  updateTopOfStack = {updateTopOfStack} topOfStack={topOfStack}/> */}
     {/* stack 3 */}
     <Card suit = "alien" cardValue = {1} stack = {3}  updateTopOfStack = {updateTopOfStack} topOfStack={topOfStack}/>
     <Card suit = "alien" cardValue = {1} stack = {3}  updateTopOfStack = {updateTopOfStack} topOfStack={topOfStack}/>
-    
+    <Card suit = "alien" cardValue = {1} stack = {3}  updateTopOfStack = {updateTopOfStack} topOfStack={topOfStack}/>
+
 
     {/* <Card suit = "moon" cardValue = {2} grdCol = {2} grdRow = {2}/>
     <Card suit = "moon" cardValue = {2} grdCol = {2} grdRow = {2}/>
