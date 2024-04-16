@@ -54,6 +54,7 @@ function App() {
     <>
       {/*Header and logo}*/}
 
+<<<<<<< HEAD
       <div className="container">
         <div>
           <h1 className="h1" >Stellar Solitaire</h1>
@@ -63,6 +64,35 @@ function App() {
       </div>
       {/*Header and logo}*/}
       <div className="tableGrid">
+=======
+    <div className = "container">
+      <div>
+      <h1 className="h1" >Stellar Solitaire</h1>
+      </div >
+      <img src = {logo} alt = "alien" style = {{float: 'right' ,marginLeft:'20px' ,height: '100px', width: 'auto'}}/>
+      
+    </div>
+    {/*Header and logo}*/}
+    <div className= "tableGrid">
+    
+    
+    {/* {items.map} */}
+
+    {/* stack 1 */}
+    {/* <Card suit = "alien" cardValue = {13}  updateTopOfStack = {updateTopOfStack} topOfStack={topOfStack}/>
+    <Card suit = "star" cardValue = {1}  updateTopOfStack = {updateTopOfStack} topOfStack={topOfStack}/>
+    <Card suit = "moon" cardValue = {13}  updateTopOfStack = {updateTopOfStack} topOfStack={topOfStack}/>
+    <Card suit = "astronaut" cardValue = {13}  updateTopOfStack = {updateTopOfStack} topOfStack={topOfStack}/>
+    <Card suit = "alien" cardValue = {1}  updateTopOfStack = {updateTopOfStack} topOfStack={topOfStack}/> */}
+    {/* stack2 */}
+    {/* <Card suit = "alien" cardValue = {1} stack = {2}  updateTopOfStack = {updateTopOfStack} topOfStack={topOfStack}/>
+    <Card suit = "alien" cardValue = {1} stack = {2}  updateTopOfStack = {updateTopOfStack} topOfStack={topOfStack}/> */}
+    {/* stack 3 */}
+    <Card suit = "alien" cardValue = {1} stack = {3}  updateTopOfStack = {updateTopOfStack} topOfStack={topOfStack}/>
+    <Card suit = "alien" cardValue = {1} stack = {3}  updateTopOfStack = {updateTopOfStack} topOfStack={topOfStack}/>
+    <Card suit = "alien" cardValue = {1} stack = {3}  updateTopOfStack = {updateTopOfStack} topOfStack={topOfStack}/>
+
+>>>>>>> b5159d418eb31d2905ea03dddd12cf4d150254bd
 
 
         {/* {items.map} */}
