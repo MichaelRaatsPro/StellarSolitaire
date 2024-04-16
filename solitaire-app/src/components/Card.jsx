@@ -83,8 +83,8 @@ function Card(props) {
 
   return (
     <>
-    <div className = "cardContainer"  onClick = {flip} style = {{gridColumn: stackID, gridRow: topOfStacks[stackID]}}>
-      {console.log(`gridRow will be ${topOfStacks[stackID].number}`)}
+    {console.log(`gridRow will be ${topOfStacks[stackID].number}`)}
+    <div className = "cardContainer"  onClick = {flip} style = {{gridColumn: stackID, gridRow: topOfStacks[stackID-1].number}}>
       <img src = {cardImage}  alt = '' /> 
       {isVisible && <p style = {{color: valColour, userSelect: 'none'}}>{displayValue}</p>}
       </div>

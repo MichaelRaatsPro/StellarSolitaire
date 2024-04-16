@@ -17,21 +17,27 @@ function App() {
 
   }
 
-  const [topOfStacks, setTopOfStacks] = //number refers to the number of cards in the stack
-    useState([
+  // const [topOfStacks, setTopOfStacks] = //number refers to the number of cards in the stack
+  //   useState([
+    let topOfStacks = [
       { id: 1, number: 1 },
-      { id: 2, number: 2 },
-      { id: 3, number: 3 },
-      { id: 4, number: 4 },
-      { id: 5, number: 5 },
-      { id: 6, number: 6 },
-      { id: 7, number: 7 }]); //set the tops of each stack
+      { id: 2, number: 1 },
+      { id: 3, number: 1 },
+      { id: 4, number: 1 },
+      { id: 5, number: 1 },
+      { id: 6, number: 1 },
+      { id: 7, number: 1 }]; //set the tops of each stack
  
       function updateTopOfStacks(stackID){
-        console.log(topOfStacks);
-        
-        const updatedStacks = topOfStacks.map( stack => ({ ...stack, number: stack.number + 1}));
-        setTopOfStacks(updatedStacks);
+        for(var i=0; i< topOfStacks.length; i++){
+          if (stackID === topOfStacks[i].id){
+            topOfStacks[i].number = topOfStacks[i].number + 1;
+          }
+
+        }        console.log(topOfStacks);
+
+        //const updatedStacks = topOfStacks.map( stack => ({ ...stack, number: stack.number + 1}));
+        //setTopOfStacks(updatedStacks);
         // console.table(updatedStacks.map(item => ({ id: item.id, number: item.number })));
       }
 
