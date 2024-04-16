@@ -14,8 +14,8 @@ function Card(props) {
   const [isFaceUp, setFaceUp] = useState(true);    //Cards default to face down state but can be flipped to face up
   const [inGoal, setGoal] = useState()
   const [isVisible, setIsVisible] = useState(true);
-  // const [grdRow, setGrdRow] = useState(props.grdRow || 2); 
-  // const [grdCol, setGrdCol] = useState(props.grdCol || 1); 
+  const [grdRow, setGrdRow] = useState(props.grdRow); 
+  const [grdCol, setGrdCol] = useState(props.grdCol); 
   // const setTopOfStack = props.setTopOfStack;
   //const [localTopOfStack, setLocalTopOfStack] = useState(topOfStack);
   const {updateTopOfStacks, topOfStacks, cardValue, stackID, suit} = (props);
@@ -70,6 +70,8 @@ function Card(props) {
     if (stackID !== 0) {
       updateTopOfStacks(stackID);
       console.log(`The stack is ${stackID}`);
+      setGrdCol(stackID);
+      setGrdRow(topOfStacks[stackID-1].number);
     }
   }, [stackID]);
 
@@ -83,8 +85,7 @@ function Card(props) {
 
   return (
     <>
-    {console.log(`gridRow will be ${topOfStacks[stackID].number}`)}
-    <div className = "cardContainer"  onClick = {flip} style = {{gridColumn: stackID, gridRow: topOfStacks[stackID-1].number}}>
+    <div className = "cardContainer"  onClick = {flip} style = {{gridColumn: grdCol, gridRow: grdRow}}>
       <img src = {cardImage}  alt = '' /> 
       {isVisible && <p style = {{color: valColour, userSelect: 'none'}}>{displayValue}</p>}
       </div>
