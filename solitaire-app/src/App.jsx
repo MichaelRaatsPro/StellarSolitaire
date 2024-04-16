@@ -23,7 +23,9 @@ function App() {
   const topCards = [];
 
   for (let x = 1; x < 8; x++) {
-    topCards.push(<Card key={`card-${x}`} suit = {'alien'} cardValue={x} stackID={0} grdCol = {x} grdRow = {1}  updateTopOfStacks={updateTopOfStacks} topOfStacks={topOfStacks} />)
+    if (x !==  3){
+      topCards.push(<Card key={`card-${x}`} suit = {'alien'} cardValue={x} stackID={0} grdCol = {x} grdRow = {1}  updateTopOfStacks={updateTopOfStacks} topOfStacks={topOfStacks} />)
+    }
   }
 
 
