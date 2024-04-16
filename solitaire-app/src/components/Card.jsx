@@ -40,7 +40,6 @@ function Card(props) {
   }
 
    useEffect(() => {
-    console.log('');
     let cardFront = cardBack;
     switch (suit) {
       case 'alien':
@@ -69,7 +68,7 @@ function Card(props) {
    useEffect(() => {
     if (stackID !== 0) {
       updateTopOfStacks(stackID);
-      console.log(`The stack is ${stackID}`);
+      // console.log(`The stack is ${stackID}`);
       setGrdCol(stackID);
       setGrdRow(topOfStacks[stackID-1].number);
     }

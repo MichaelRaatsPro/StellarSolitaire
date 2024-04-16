@@ -4,6 +4,7 @@ import Table from "./components/Table";
 import React, { useState } from 'react';
 import './App.css';
 import Card from "./components/Card";
+import Deck from "./components/Deck";
 
 document.title = "Stellar Solitaire";
 
@@ -31,7 +32,7 @@ function App() {
   for (let i = 1; i < 8; i++) {
     for (let j = 1; j < 15; j++) {
       tableuCards.push(<Card key={`card-${i}-${j}`} suit = {'alien'} cardValue={j} stackID={i} updateTopOfStacks={updateTopOfStacks} topOfStacks={topOfStacks} />);
-      console.log(j);
+      // console.log(j);
     }
 
 
@@ -44,7 +45,6 @@ function App() {
     stackToUpdate.number += 1;
   }
     } console.log(topOfStacks);
-
 
   return (
     <>
@@ -60,8 +60,9 @@ function App() {
       {/*Header and logo}*/}
       <div className="tableGrid">
 
-        {topCards}
-        {tableuCards}
+        {/* <Deck size = {52}/> */}
+        {topCards} 
+        {tableuCards} 
 
         {/* <Table></Table>  */}
       </div>
