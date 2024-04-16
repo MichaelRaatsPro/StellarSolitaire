@@ -18,7 +18,7 @@ function Card(props) {
   // const [grdCol, setGrdCol] = useState(props.grdCol || 1); 
   // const setTopOfStack = props.setTopOfStack;
   //const [localTopOfStack, setLocalTopOfStack] = useState(topOfStack);
-  const {updateTopOfStack, topOfStack, cardValue, stack, suit} = (props);
+  const {updateTopOfStacks, topOfStacks, cardValue, stackID, suit} = (props);
 
   let displayValue = cardValue;
   switch (cardValue) {
@@ -40,7 +40,6 @@ function Card(props) {
   }
 
    useEffect(() => {
-    console.log('Grid item clicked');
     console.log('');
     let cardFront = cardBack;
     switch (suit) {
@@ -68,11 +67,11 @@ function Card(props) {
    }, [isFaceUp,suit])
 
    useEffect(() => {
-    if (stack !== 0) {
-      updateTopOfStack(stack);
-      console.log(`My current top of stacks are ${topOfStack}`);
+    if (stackID !== 0) {
+      updateTopOfStacks(stackID);
+      console.log(`The stack is ${stackID}`);
     }
-  }, [stack]);
+  }, [stackID]);
 
    function flip(event){
     console.log('Flipping');
@@ -84,7 +83,8 @@ function Card(props) {
 
   return (
     <>
-    <div className = "cardContainer"  onClick = {flip} style = {{gridColumn: stack, gridRow: topOfStack[stack]}}>
+    <div className = "cardContainer"  onClick = {flip} style = {{gridColumn: stackID, gridRow: topOfStacks[stackID]}}>
+      {console.log(`gridRow will be ${topOfStacks[stackID].number}`)}
       <img src = {cardImage}  alt = '' /> 
       {isVisible && <p style = {{color: valColour, userSelect: 'none'}}>{displayValue}</p>}
       </div>
@@ -92,4 +92,4 @@ function Card(props) {
   )
 }
 
-export default memo(Card)
+export default Card;
