@@ -15,10 +15,13 @@ function Card(props) {
   const [inGoal, setGoal] = useState()
   const [isVisible, setIsVisible] = useState(true);
   const [grdRow, setGrdRow] = useState(props.grdRow); 
+  const [zIdx, setZIdx] = useState(grdRow); // Initialize zIndex with grdRow
   const [grdCol, setGrdCol] = useState(props.grdCol); 
   // const setTopOfStack = props.setTopOfStack;
   //const [localTopOfStack, setLocalTopOfStack] = useState(topOfStack);
   const {updateTopOfStacks, topOfStacks, cardValue, stackID, suit} = (props);
+
+
 
   let displayValue = cardValue;
   switch (cardValue) {
@@ -74,8 +77,13 @@ function Card(props) {
     }
   }, [stackID]);
 
+  useEffect(() => {
+    setZIdx(grdRow);
+  }, [grdRow]);
+
    function flip(event){
     console.log('Flipping');
+    console.log(`the zindex of this card is ${zIdx})`)
     setFaceUp(!isFaceUp);
     event.stopPropagation();
   }
@@ -84,7 +92,8 @@ function Card(props) {
 
   return (
     <>
-    <div className = "cardContainer"  onClick = {flip} style = {{gridColumn: grdCol, gridRow: grdRow}}>
+    <div className = "cardContainer"  onClick = {flip} style = {{gridColumn: grdCol, gridRow: grdRow, zIndex: zIdx}}>
+      {console.log(grdRow)}
       <img src = {cardImage}  alt = '' /> 
       {isVisible && <p style = {{color: valColour, userSelect: 'none'}}>{displayValue}</p>}
       </div>
