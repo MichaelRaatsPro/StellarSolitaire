@@ -62,9 +62,9 @@ function App() {
       {/*Header and logo}*/}
       <div className="tableGrid">
 
-        {/* <Deck size = {52}/> */}
-        {topCards} 
-        {tableuCards} 
+        <Deck size = {52} updateTopOfStacks={updateTopOfStacks}/>
+        {/* {topCards} 
+        {tableuCards}  */}
 
         {/* <Table></Table>  */}
       </div>

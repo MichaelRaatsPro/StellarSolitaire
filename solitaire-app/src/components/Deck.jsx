@@ -3,7 +3,7 @@ import Card from "./Card";
 
 const cards = [];
 
-function Deck({size}){
+function Deck({size, updateTopOfStacks}){
 
     for (let i = 0; i < size; i++){
       console.log("Iteration",i);
@@ -18,7 +18,11 @@ function Deck({size}){
     return(
         <div className = "deck">
         {cards.map((card) =>
-                 <Card key= {`${card.number}-${card.suit}`} cardValue = {card.number} suit = {card.suit} />
+                 <Card 
+                    key= {`${card.number}-${card.suit}`}
+                    cardValue = {card.number}
+                    suit = {card.suit}
+                    updateTopOfStacks = {updateTopOfStacks} />
                  
          )}
           {/* <Card {`card-${x}`} suit = {'alien'} cardValue={x} stackID={0} grdCol = {x} grdRow = {1}  updateTopOfStacks={updateTopOfStacks} topOfStacks={topOfStacks} /> */}
