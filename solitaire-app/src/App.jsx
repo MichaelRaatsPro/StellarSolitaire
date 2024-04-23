@@ -19,21 +19,13 @@ function App() {
     { id: 6, number: 1 },
     { id: 7, number: 1 }]; //set the tops of each stack
 
-  
-  const topCards = [];
-
-  for (let x = 1; x < 8; x++) {
-    if (x !==  3){
-      topCards.push(<Card key={`card-${x}`} suit = {'alien'} cardValue={x} stackID={0} grdCol = {x} grdRow = {1}  updateTopOfStacks={updateTopOfStacks} topOfStacks={topOfStacks} />)
-    }
-  }
-
+  const deck = <Deck size={52} updateTopOfStacks={updateTopOfStacks} topOfStacks={topOfStacks} />;
 
   const tableuCards = [];
 
   for (let i = 1; i < 8; i++) {
     for (let j = 1; j < 15; j++) {
-      tableuCards.push(<Card key={`card-${i}-${j}`} suit = {'alien'} cardValue={j} stackID={i} updateTopOfStacks={updateTopOfStacks} topOfStacks={topOfStacks} />);
+      tableuCards.push(<Card key={`card-${i}-${j}`} suit = {1} cardValue={j} stackID={i} updateTopOfStacks={updateTopOfStacks} topOfStacks={topOfStacks} />);
       // console.log(j);
     }
 
@@ -62,9 +54,9 @@ function App() {
       {/*Header and logo}*/}
       <div className="tableGrid">
 
-        <Deck size = {52} updateTopOfStacks={updateTopOfStacks}/>
-        {/* {topCards} 
-        {tableuCards}  */}
+        {<Deck size = {52} updateTopOfStacks={updateTopOfStacks} topOfStacks={topOfStacks}/> }
+        {/* {topCards}  */}
+        {/* {tableuCards}  */}
 
         {/* <Table></Table>  */}
       </div>

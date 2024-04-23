@@ -1,32 +1,45 @@
+//Deck
+import '../App.css';
+import React from 'react';
 import Card from "./Card";
 
 
 const cards = [];
 
-function Deck({size, updateTopOfStacks}){
-
+function Deck({size, updateTopOfStacks, topOfStacks}){
+    
+    const stackID = 0;
+    const grdRow = 1;
+    const grdCol = 1;
+    let cardZIdx = 1;
     for (let i = 0; i < size; i++){
       console.log("Iteration",i);
       const suit = Math.floor(Math.random() * 4) + 1;
-      const number = (i % 13) + 1;
-      if (!cards.find(card => card.suit === suit && card.number === number)){
-        cards.push({ number, suit});
+      const number = Math.floor(Math.random() * 13 ) + 1;
+      console.log(`random number is ${number}`);
+      if ( cards.length===0 || !cards.find(card => card.suit === suit && card.number === number)){
+        cards.push (<Card 
+          key= {`card-${i}`}
+          cardValue = {number}
+          suit = {suit}
+          stackID = {stackID}
+          grdRow = {grdRow}
+          grdCol = {grdCol}
+          updateTopOfStacks = {updateTopOfStacks}
+          topOfStacks={topOfStacks} 
+          zIdx = {cardZIdx}
+        />); 
+        console.log(`the card number ${i+1} is at row ${grdRow} and column ${grdCol}`);
+        cardZIdx = cardZIdx + 1;
+      }else{
+        i--;
       }
     }
     console.log(cards.length);
 
-    return(
-        <div className = "deck">
-        {cards.map((card) =>
-                 <Card 
-                    key= {`${card.number}-${card.suit}`}
-                    cardValue = {card.number}
-                    suit = {card.suit}
-                    updateTopOfStacks = {updateTopOfStacks} />
-                 
-         )}
-          {/* <Card {`card-${x}`} suit = {'alien'} cardValue={x} stackID={0} grdCol = {x} grdRow = {1}  updateTopOfStacks={updateTopOfStacks} topOfStacks={topOfStacks} /> */}
-        </div>
+    return(<>
+          {cards}
+          </>
     );
   }
 

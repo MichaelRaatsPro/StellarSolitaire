@@ -62,6 +62,7 @@ h1 {
 
 .tableGrid{
     display: grid;
+    position: absolute;
     grid-template-columns: repeat(7, 1fr); /* 7 columns of equal width */
     grid-template-rows: 5fr repeat(13, 0.7fr); /* 2 rows with one being 1 third and the 2nd being 2 thirds */
     grid-auto-rows: 0;
