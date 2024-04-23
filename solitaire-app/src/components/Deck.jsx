@@ -8,7 +8,7 @@ const cards = [];
 
 function Deck({size, updateTopOfStacks, topOfStacks}){
     
-    const stackID = 0;
+    const stackID = "stock";
     const grdRow = 1;
     const grdCol = 1;
     let cardZIdx = 1;
@@ -23,8 +23,6 @@ function Deck({size, updateTopOfStacks, topOfStacks}){
           cardValue = {number}
           suit = {suit}
           stackID = {stackID}
-          grdRow = {grdRow}
-          grdCol = {grdCol}
           updateTopOfStacks = {updateTopOfStacks}
           topOfStacks={topOfStacks} 
           zIdx = {cardZIdx}

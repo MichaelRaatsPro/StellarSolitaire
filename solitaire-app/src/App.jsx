@@ -11,13 +11,22 @@ document.title = "Stellar Solitaire";
 function App() {
   
   let topOfStacks = [
-    { id: 1, number: 1 },
-    { id: 2, number: 1 },
-    { id: 3, number: 1 },
-    { id: 4, number: 1 },
-    { id: 5, number: 1 },
-    { id: 6, number: 1 },
-    { id: 7, number: 1 }]; //set the tops of each stack
+    //stock & waste
+    {id: "stock", number: 1},
+    {id: "waste", number: 1},
+    //foundations
+    {id: "f1", number: 1},
+    {id: "f2", number: 1},
+    {id: "f3", number: 1},
+    {id: "f4", number: 1},
+    //tableu stacks
+    { id: "t1", number: 1 },
+    { id: "t2", number: 1 },
+    { id: "t3", number: 1 },
+    { id: "t4", number: 1 },
+    { id: "t5", number: 1 },
+    { id: "t6", number: 1 },
+    { id: "t7", number: 1 }]; //set the tops of each stack
 
   const deck = <Deck size={52} updateTopOfStacks={updateTopOfStacks} topOfStacks={topOfStacks} />;
 

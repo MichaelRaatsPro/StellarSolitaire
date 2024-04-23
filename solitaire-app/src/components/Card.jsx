@@ -11,14 +11,16 @@ import '../App.css';
 function Card(props) {
 
   const [cardImage, setCardImage] = useState(cardBack);
-  const [isFaceUp, setFaceUp] = useState(true);    //Cards default to face down state but can be flipped to face up
+  const [cardFront, setCardFront] = useState(errorCard);
+  const [isFaceUp, setFaceUp] = useState(false);    //Cards default to face down state but can be flipped to face up
   const [inGoal, setGoal] = useState()
   const [isVisible, setIsVisible] = useState(true);
   const [grdRow, setGrdRow] = useState(props.grdRow); 
   const [zIdx, setZIdx] = useState(props.zIdx || grdRow); // Initialize zIndex with grdRow
   const [grdCol, setGrdCol] = useState(props.grdCol); 
-  const {updateTopOfStacks, topOfStacks, cardValue, stackID, suit} = (props);
-
+  const [stackID, setStackID] = useState(props.stackID);
+  const {updateTopOfStacks, topOfStacks, cardValue, suit} = (props);
+  const [canUpdate, setCanUpdate] = useState(true);     //used to avoid infinite looping of useEffects
 
   let displayValue = cardValue;
   switch (cardValue) {
@@ -40,50 +42,115 @@ function Card(props) {
   }
 
    useEffect(() => {
-    let cardFront = cardBack;
     switch (suit) {
       case 1:
-        cardFront = alienCard;
+        setCardFront(alienCard);
         break;
       case 2:
-        cardFront = astronautCard;
+        setCardFront(astronautCard);
         break;
       case 3:
-        cardFront = starCard;
+        setCardFront(starCard);
         break;
       case 4:
-        cardFront = moonCard;
+        setCardFront(moonCard);
         break;  
       default:
-        cardFront = errorCard;
+        setCardFront(errorCard);
         break;
     }
-
-    isFaceUp? setCardImage(cardFront) :  setCardImage(cardBack);
-    isFaceUp? setIsVisible(true): setIsVisible(false);
-
-    
-   }, [isFaceUp,suit])
+   }, [suit])
 
    useEffect(() => {
-    if (stackID !== 0) {
+    isFaceUp? setCardImage(cardFront) :  setCardImage(cardBack);
+    isFaceUp? setIsVisible(true): setIsVisible(false);
+   }, [isFaceUp])
+
+   useEffect(() => {
+    if (canUpdate){
+      setCanUpdate(false);
       updateTopOfStacks(stackID);
+      let colRef = 1;
+      code here;
+      switch(stackID){
+        case "stock": case "t1":
+          colRef = 1;
+          break;
+        case "waste": case "t2":
+          colRef = 2;
+          break;
+        case "t3":
+          colRef = 3;
+          break;
+        case "t4": case "f1":
+          colRef = 4;
+          break;  
+        case "t5": case "f2":
+          colRef = 5;
+          break;  
+        case "t6": case "f3":
+          colRef = 6;
+          break;
+        case "t7": case "f4":
+          colRef = 7;
+          break;     
+        default:
+          colRef = -1;
+          break;
+      }
       // console.log(`The stack is ${stackID}`);
-      setGrdCol(stackID);
-      setGrdRow(topOfStacks[stackID-1].number);
+      if (stackID.startsWith('t')) {
+        setGrdRow(topOfStacks.find(stack => stack.id === stackID).number);
+      }else{
+        setGrdRow(1);
+      }
+      setGrdCol(colRef);
+      setZIdx(topOfStacks.find(stack => stack.id === stackID).number);
     }
   }, [stackID]);
 
+  // if the column changes, StackID needs to update acccordingly
   useEffect(() => {
-    if (stackID !== 0){
-      setZIdx(grdRow);
+    if (canUpdate){
+      setCanUpdate(false);
+      switch(){
+        case "stock": 
+          colRef = 1;
+          break;
+        case "waste": case "t2":
+          colRef = 2;
+          break;
+        case "t3":
+          colRef = 3;
+          break;
+        case "t4": case "f1":
+          colRef = 4;
+          break;  
+        case "t5": case "f2":
+          colRef = 5;
+          break;  
+        case "t6": case "f3":
+          colRef = 6;
+          break;
+        case "t7": case "f4":
+          colRef = 7;
+          break;     
+        default:
+          colRef = -1;
+          break;
+      }
     }
-  }, [grdRow]);
+  }, [grdCol,grdRow]);
 
    function flip(event){
     console.log('Flipping');
     console.log(`the zindex of this card is ${zIdx})`)
-    setGrdCol(grdCol+1);
+    console.log(`the col of this card is ${grdCol})`)
+    console.log(`the row of this card is ${grdRow})`)
+    setCanUpdate(true);
+    if (grdCol === 1 && grdRow === 1){
+      setGrdCol(grdCol+1);
+    }
     setFaceUp(!isFaceUp);
     event.stopPropagation();
   }
