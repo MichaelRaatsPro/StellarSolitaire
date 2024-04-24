@@ -67,11 +67,10 @@ function Card(props) {
    }, [isFaceUp])
 
    useEffect(() => {
-    if (canUpdate){
+    // if (canUpdate){
       setCanUpdate(false);
       updateTopOfStacks(stackID);
       let colRef = 1;
-      code here;
       switch(stackID){
         case "stock": case "t1":
           colRef = 1;
@@ -106,44 +105,36 @@ function Card(props) {
       }
       setGrdCol(colRef);
       setZIdx(topOfStacks.find(stack => stack.id === stackID).number);
-    }
+    // }
   }, [stackID]);
 
   // if the column changes, StackID needs to update acccordingly
-  useEffect(() => {
-    if (canUpdate){
-      setCanUpdate(false);
-      switch(){
-        case "stock": 
-          colRef = 1;
-          break;
-        case "waste": case "t2":
-          colRef = 2;
-          break;
-        case "t3":
-          colRef = 3;
-          break;
-        case "t4": case "f1":
-          colRef = 4;
-          break;  
-        case "t5": case "f2":
-          colRef = 5;
-          break;  
-        case "t6": case "f3":
-          colRef = 6;
-          break;
-        case "t7": case "f4":
-          colRef = 7;
-          break;     
-        default:
-          colRef = -1;
-          break;
-      }
-    }
-  }, [grdCol,grdRow]);
+  // useEffect(() => {
+  //   // if (canUpdate){
+  //     if (grdRow === 1){
+  //       switch(grdCol){
+  //         case 1: 
+  //           setStackID("stock");
+  //           break;
+  //         case 2:
+  //           setStackID("waste");
+  //           break;
+  //         case 4: case 5: case 6: case 7:
+  //           setStackID(`f${grdCol}`);
+  //           break;  
+  //         default:
+  //           setStackID("");
+  //           break;
+  //       }
+  //     }else if (grdRow >= 2){
+  //       setStackID(`t${grdCol}`);
+  //     }
+  //   // }
+  // }, [grdCol,grdRow]);
 
    function flip(event){
     console.log('Flipping');
+    console.log(`the stackID of this card is ${stackID})`);
     console.log(`the zindex of this card is ${zIdx})`)
     console.log(`the col of this card is ${grdCol})`)
     console.log(`the row of this card is ${grdRow})`)
