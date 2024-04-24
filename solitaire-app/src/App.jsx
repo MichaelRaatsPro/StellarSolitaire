@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import './App.css';
 import Card from "./components/Card";
 import Deck from "./components/Deck";
+import moonFoundation from "./images/moon-foundation.svg";
 
 document.title = "Stellar Solitaire";
 
@@ -19,7 +20,7 @@ function App() {
     {id: "f2", number: 1},
     {id: "f3", number: 1},
     {id: "f4", number: 1},
-    //tableu stacks
+    //tableau stacks
     { id: "t1", number: 1 },
     { id: "t2", number: 1 },
     { id: "t3", number: 1 },

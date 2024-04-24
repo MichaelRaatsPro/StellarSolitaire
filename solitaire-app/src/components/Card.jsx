@@ -14,6 +14,7 @@ function Card(props) {
   const [cardFront, setCardFront] = useState(errorCard);
   const [isFaceUp, setFaceUp] = useState(false);    //Cards default to face down state but can be flipped to face up
   const [inGoal, setGoal] = useState()
+  const [topCard, setTopCard] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [grdRow, setGrdRow] = useState(props.grdRow); 
   const [zIdx, setZIdx] = useState(props.zIdx || grdRow); // Initialize zIndex with grdRow
@@ -105,32 +106,45 @@ function Card(props) {
       }
       setGrdCol(colRef);
       setZIdx(topOfStacks.find(stack => stack.id === stackID).number);
-    // }
   }, [stackID]);
 
+  useEffect(() => {
+    // Check if the card is the top card based on zIndex
+    if (stackID !== "stock"){
+      setTopCard(zIdx === topOfStacks.find(stack => stack.id === stackID).number );
+    }
+  }, [stackID, topOfStacks, zIdx]);
+
+
+  useEffect(() => {
+    if (topCard){
+      setFaceUp(true);
+    }
+  }, [topCard]);
+
   // if the column changes, StackID needs to update acccordingly
-  // useEffect(() => {
-  //   // if (canUpdate){
-  //     if (grdRow === 1){
-  //       switch(grdCol){
-  //         case 1: 
-  //           setStackID("stock");
-  //           break;
-  //         case 2:
-  //           setStackID("waste");
-  //           break;
-  //         case 4: case 5: case 6: case 7:
-  //           setStackID(`f${grdCol}`);
-  //           break;  
-  //         default:
-  //           setStackID("");
-  //           break;
-  //       }
-  //     }else if (grdRow >= 2){
-  //       setStackID(`t${grdCol}`);
-  //     }
-  //   // }
-  // }, [grdCol,grdRow]);
+  useEffect(() => {
+    // if (canUpdate){
+      if (grdRow === 1){
+        switch(grdCol){
+          case 1: 
+            setStackID("stock");
+            break;
+          case 2:
+            setStackID("waste");
+            break;
+          case 4: case 5: case 6: case 7:
+            setStackID(`f${grdCol}`);
+            break;  
+          default:
+            setStackID("");
+            break;
+        }
+      }else if (grdRow >= 2){
+        setStackID(`t${grdCol}`);
+      }
+    // }
+  }, [grdCol,grdRow]);
 
    function flip(event){
     console.log('Flipping');
@@ -138,6 +152,7 @@ function Card(props) {
     console.log(`the zindex of this card is ${zIdx})`)
     console.log(`the col of this card is ${grdCol})`)
     console.log(`the row of this card is ${grdRow})`)
+    console.log(`tthis card is topCard? ${topCard})`)
     setCanUpdate(true);
     if (grdCol === 1 && grdRow === 1){
       setGrdCol(grdCol+1);
@@ -150,9 +165,11 @@ function Card(props) {
 
   return (
     <>
-    <div className = "cardContainer"  onClick = {flip} style = {{gridColumn: grdCol, gridRow: grdRow, zIndex: zIdx}}>
+    <div className = "cardContainer"  onClick= {stackID == "stock" ? flip : undefined}  style = {{gridColumn: grdCol, gridRow: grdRow, zIndex: zIdx} }>
       <img src = {cardImage}  alt = '' /> 
-      {isVisible && <p style = {{color: valColour, userSelect: 'none'}}>{displayValue}</p>}
+      {isVisible && <> <p style = {{color: valColour, userSelect: 'none'}}>{displayValue}</p> 
+      <p className = {grdRow === 1 ? "topLeft1" : "topLeft2"} style={{ color: valColour, userSelect: 'none' }}>{displayValue}</p>
+      </>}
       </div>
     </>
   )

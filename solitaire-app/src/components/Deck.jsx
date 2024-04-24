@@ -16,17 +16,16 @@ function Deck({size, updateTopOfStacks, topOfStacks}){
       console.log("Iteration",i);
       const suit = Math.floor(Math.random() * 4) + 1;
       const number = Math.floor(Math.random() * 13 ) + 1;
-      console.log(`random number is ${number}`);
-      if (i>=23){
-        if (i >= 45 && i <= 52){
+      if (i>24){
+        if (i >= 45 && i < 52){
           stackID = "t7";
-        }else if(i >= 39 && i <= 44 ){
+        }else if(i >= 39 && i < 45 ){
           stackID = "t6";
-        }else if(i >= 34 && i <= 38 ){
+        }else if(i >= 34 && i < 39 ){
           stackID = "t5";
-        }else if(i >= 30 && i <= 33 ){
+        }else if(i >= 30 && i < 34 ){
           stackID = "t4";
-        }else if(i >= 27 && i <= 29 ){
+        }else if(i >= 27 && i < 30 ){
           stackID = "t3";
         }else if(i === 25 || i === 26 ){
           stackID = "t2";
@@ -52,7 +51,7 @@ function Deck({size, updateTopOfStacks, topOfStacks}){
         i--;
       }
     }
-    console.log(cards.length);
+    console.log(`the number of cards is ${cards.length}`);
 
     return(<>
           {cards}
