@@ -1,4 +1,5 @@
 //App.jsx
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'; 
 import logo from "./images/alien.svg";
 import Table from "./components/Table";
 import React, { useState } from 'react';
@@ -6,6 +7,9 @@ import './App.css';
 import Card from "./components/Card";
 import Deck from "./components/Deck";
 import moonFoundation from "./images/moon-foundation.svg";
+import starFoundation from "./images/star-foundation.svg";
+import alienFoundation from "./images/alien-foundation.svg";
+import astronautFoundation from "./images/astronaut-foundation.svg";
 
 document.title = "Stellar Solitaire";
 
@@ -31,17 +35,6 @@ function App() {
 
   const deck = <Deck size={52} updateTopOfStacks={updateTopOfStacks} topOfStacks={topOfStacks} />;
 
-  const tableuCards = [];
-
-  for (let i = 1; i < 8; i++) {
-    for (let j = 1; j < 15; j++) {
-      tableuCards.push(<Card key={`card-${i}-${j}`} suit = {1} cardValue={j} stackID={i} updateTopOfStacks={updateTopOfStacks} topOfStacks={topOfStacks} />);
-      // console.log(j);
-    }
-
-
-  }
-
   function updateTopOfStacks(stackID) {
     const stackToUpdate = topOfStacks.find(stack => stack.id === stackID);
 
@@ -63,10 +56,12 @@ function App() {
       </div>
       {/*Header and logo}*/}
       <div className="tableGrid">
-
+        <img src = {alienFoundation} style={{ gridColumn: '4', gridRow: '1' , marginBottom : "10px", justifySelf: "center"}} />
+        <img src = {astronautFoundation} style={{ gridColumn: '5', gridRow: '1', justifySelf: "center"}} />
+        <img src = {starFoundation} style={{ gridColumn: '6', gridRow: '1', justifySelf: "center"}} />
+        <img src = {moonFoundation} style={{ gridColumn: '7', gridRow: '1', justifySelf: "center"}} />
         {<Deck size = {52} updateTopOfStacks={updateTopOfStacks} topOfStacks={topOfStacks}/> }
-        {/* {topCards}  */}
-        {/* {tableuCards}  */}
+        {}
 
         {/* <Table></Table>  */}
       </div>

@@ -147,12 +147,12 @@ function Card(props) {
   }, [grdCol,grdRow]);
 
    function flip(event){
-    console.log('Flipping');
-    console.log(`the stackID of this card is ${stackID})`);
-    console.log(`the zindex of this card is ${zIdx})`)
-    console.log(`the col of this card is ${grdCol})`)
-    console.log(`the row of this card is ${grdRow})`)
-    console.log(`tthis card is topCard? ${topCard})`)
+    // console.log('Flipping');
+    // console.log(`the stackID of this card is ${stackID})`);
+    // console.log(`the zindex of this card is ${zIdx})`)
+    // console.log(`the col of this card is ${grdCol})`)
+    // console.log(`the row of this card is ${grdRow})`)
+    // console.log(`tthis card is topCard? ${topCard})`)
     setCanUpdate(true);
     if (grdCol === 1 && grdRow === 1){
       setGrdCol(grdCol+1);
@@ -161,13 +161,13 @@ function Card(props) {
     event.stopPropagation();
   }
 
-  let valColour = suit === 'alien' || suit === 'astronaut'? 'black' : 'white';
+  let valColour = suit === 1 || suit === 2? 'black' : 'white'; //if alien/astronaut suit set text color to black, else white 
 
   return (
     <>
-    <div className = "cardContainer"  onClick= {stackID == "stock" ? flip : undefined}  style = {{gridColumn: grdCol, gridRow: grdRow, zIndex: zIdx} }>
+    <div className = "cardContainer"  onClick= {stackID === "stock" ? flip : undefined}  style = {{gridColumn: grdCol, gridRow: grdRow, zIndex: zIdx} }>
       <img src = {cardImage}  alt = '' /> 
-      {isVisible && <> <p style = {{color: valColour, userSelect: 'none'}}>{displayValue}</p> 
+      {isVisible && <> <p className = {grdRow === 1 ? "middle1" : "middle2"} style = {{color: valColour, userSelect: 'none'}}>{displayValue}</p> 
       <p className = {grdRow === 1 ? "topLeft1" : "topLeft2"} style={{ color: valColour, userSelect: 'none' }}>{displayValue}</p>
       </>}
       </div>
