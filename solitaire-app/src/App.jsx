@@ -55,11 +55,13 @@ function App() {
 
       </div>
       {/*Header and logo}*/}
+      
+      {/* Table grid and cards */}
       <div className="tableGrid">
-        <img src = {alienFoundation} style={{ gridColumn: '4', gridRow: '1' , marginBottom : "10px", justifySelf: "center"}} />
-        <img src = {astronautFoundation} style={{ gridColumn: '5', gridRow: '1', justifySelf: "center"}} />
-        <img src = {starFoundation} style={{ gridColumn: '6', gridRow: '1', justifySelf: "center"}} />
-        <img src = {moonFoundation} style={{ gridColumn: '7', gridRow: '1', justifySelf: "center"}} />
+        <img src = {alienFoundation} style={{ gridColumn: '4', gridRow: '1' , marginBottom : "10px", justifySelf: "center", zIndex: "0"}} />
+        <img src = {astronautFoundation} style={{ gridColumn: '5', gridRow: '1', justifySelf: "center", zIndex: "0"}} />
+        <img src = {starFoundation} style={{ gridColumn: '6', gridRow: '1', justifySelf: "center", zIndex: "0"}} />
+        <img src = {moonFoundation} style={{ gridColumn: '7', gridRow: '1', justifySelf: "center", zIndex: "0"}} />
         {<Deck size = {52} updateTopOfStacks={updateTopOfStacks} topOfStacks={topOfStacks}/> }
         {}
 
