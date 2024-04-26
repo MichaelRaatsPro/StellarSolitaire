@@ -1,4 +1,5 @@
 //Card.jsx
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'; 
 import React, { memo, useState, useEffect } from 'react'
 import cardBack from '../images/card-back.svg';
 import alienCard from '../images/alien-card.svg';
@@ -165,6 +166,7 @@ function Card(props) {
 
   return (
     <>
+  
     <div className = "cardContainer"  onClick= {stackID === "stock" ? flip : undefined}  style = {{gridColumn: grdCol, gridRow: grdRow, zIndex: zIdx} }>
       <img src = {cardImage}  alt = '' /> 
       {isVisible && <> <p className = {grdRow === 1 ? "middle1" : "middle2"} style = {{color: valColour, userSelect: 'none'}}>{displayValue}</p> 

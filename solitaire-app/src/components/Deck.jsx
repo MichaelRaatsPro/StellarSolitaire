@@ -36,7 +36,8 @@ function Deck({size, updateTopOfStacks, topOfStacks}){
         stackID = "stock";
       }
       if ( cards.length===0 || !cards.find(card => card.suit === suit && card.number === number)){
-        cards.push (<Card 
+        cards.push (
+        <Card 
           key= {`card-${i}`}
           cardValue = {number}
           suit = {suit}
