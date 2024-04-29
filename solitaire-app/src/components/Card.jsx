@@ -197,7 +197,7 @@ function Card(props) {
     <div className = "cardContainer" ref = {drag} onClick= {stackID === "stock" ? flip : undefined}  style = {{gridColumn: grdCol, gridRow: grdRow, zIndex: zIdx} }>
       <img src = {cardImage}  alt = '' /> 
       {isVisible && <> <p className = {grdRow === 1 ? "middle1" : "middle2"} style = {{color: valColour}}>{displayValue}</p> 
-      <p className = {grdRow === 1 ? "topLeft1" : "topLeft2"} style={{ color: valColour, userSelect: 'none' }}>{displayValue}</p>
+      <p className = {grdRow === 1 ? "topLeft1" : "topLeft2"} style={{ color: valColour }}>{displayValue}</p>
       </>}
       </div>
     </>
