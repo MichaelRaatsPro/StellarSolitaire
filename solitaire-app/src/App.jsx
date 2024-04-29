@@ -1,5 +1,4 @@
 //App.jsx
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'; 
 import logo from "./images/alien.svg";
 import Table from "./components/Table";
 import React, { useState } from 'react';
@@ -62,7 +61,7 @@ function App() {
         <img src = {astronautFoundation} style={{ gridColumn: '5', gridRow: '1', justifySelf: "center", zIndex: "0"}} />
         <img src = {starFoundation} style={{ gridColumn: '6', gridRow: '1', justifySelf: "center", zIndex: "0"}} />
         <img src = {moonFoundation} style={{ gridColumn: '7', gridRow: '1', justifySelf: "center", zIndex: "0"}} />
-        {<Deck size = {52} updateTopOfStacks={updateTopOfStacks} topOfStacks={topOfStacks}/> }
+        {deck}
         {}
 
         {/* <Table></Table>  */}
