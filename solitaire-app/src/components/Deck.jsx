@@ -6,8 +6,8 @@ import Card from "./Card";
 
 const cards = [];
 
-function Deck({size, updateTopOfStacks, topOfStacks}){
-    
+function Deck({size, updateTopOfStacks, topOfStacks, droppableAreas}){
+    {console.log("deck is called ")}
     let stackID = "stock";
     const grdRow = 1;
     const grdCol = 1;
@@ -36,12 +36,14 @@ function Deck({size, updateTopOfStacks, topOfStacks}){
         stackID = "stock";
       }
       if ( cards.length===0 || !cards.find(card => card.suit === suit && card.number === number)){
+        {console.log(`card-${i}`)}
         cards.push (
         <Card 
           key= {`card-${i}`}
           cardValue = {number}
           suit = {suit}
           stackID = {stackID}
+          droppableAreas={droppableAreas} 
           updateTopOfStacks = {updateTopOfStacks}
           topOfStacks={topOfStacks} 
           zIdx = {cardZIdx}

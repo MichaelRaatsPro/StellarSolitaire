@@ -1,5 +1,6 @@
 //Card.jsx
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'; 
+import {useDrag, useDrop} from 'react-dnd';
+import {DndProvider} from 'react-dnd';
 import React, { memo, useState, useEffect } from 'react'
 import cardBack from '../images/card-back.svg';
 import alienCard from '../images/alien-card.svg';
@@ -21,7 +22,7 @@ function Card(props) {
   const [zIdx, setZIdx] = useState(props.zIdx || grdRow); // Initialize zIndex with grdRow
   const [grdCol, setGrdCol] = useState(props.grdCol); 
   const [stackID, setStackID] = useState(props.stackID);
-  const {updateTopOfStacks, topOfStacks, cardValue, suit} = (props);
+  const {updateTopOfStacks, topOfStacks, cardValue, suit, droppableAreas} = (props);
   const [canUpdate, setCanUpdate] = useState(true);     //used to avoid infinite looping of useEffects
 
   let displayValue = cardValue;
@@ -147,6 +148,33 @@ function Card(props) {
     // }
   }, [grdCol,grdRow]);
 
+  const [{isDragging}, drag] = useDrag({
+     type: 'CARD',
+    collect: (monitor) => ({
+      isDragging: !!monitor.isDragging(),
+    }),
+    end: (item, monitor) => {
+      const dropResult = monitor.getDropResult();
+      if (dropResult){
+        //code here
+      }
+    }
+  });
+
+  
+  const [{isOver, canDrop}] = useDrop({
+    accept:'CARD',
+    drop: (item, monitor) => {
+      const droppedAreaID = 'dropArea';
+      console.log(`Card dropped in &{droppedAreaID}`);
+    },
+    collect: (monitor) => ({
+      isOver: !!monitor.isOver(),
+      canDrop: !!monitor.canDrop(),
+    }),
+  });
+
+
    function flip(event){
     // console.log('Flipping');
     // console.log(`the stackID of this card is ${stackID})`);
@@ -166,10 +194,9 @@ function Card(props) {
 
   return (
     <>
-  
-    <div className = "cardContainer"  onClick= {stackID === "stock" ? flip : undefined}  style = {{gridColumn: grdCol, gridRow: grdRow, zIndex: zIdx} }>
+    <div className = "cardContainer" ref = {drag} onClick= {stackID === "stock" ? flip : undefined}  style = {{gridColumn: grdCol, gridRow: grdRow, zIndex: zIdx} }>
       <img src = {cardImage}  alt = '' /> 
-      {isVisible && <> <p className = {grdRow === 1 ? "middle1" : "middle2"} style = {{color: valColour, userSelect: 'none'}}>{displayValue}</p> 
+      {isVisible && <> <p className = {grdRow === 1 ? "middle1" : "middle2"} style = {{color: valColour}}>{displayValue}</p> 
       <p className = {grdRow === 1 ? "topLeft1" : "topLeft2"} style={{ color: valColour, userSelect: 'none' }}>{displayValue}</p>
       </>}
       </div>

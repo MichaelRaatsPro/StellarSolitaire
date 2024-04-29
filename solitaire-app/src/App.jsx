@@ -1,5 +1,7 @@
 //App.jsx
 import logo from "./images/alien.svg";
+import {useDrag, useDrop, DndProvider } from "react-dnd";
+import {HTML5Backend} from "react-dnd-html5-backend";
 import Table from "./components/Table";
 import React, { useState } from 'react';
 import './App.css';
@@ -32,8 +34,6 @@ function App() {
     { id: "t6", number: 1 },
     { id: "t7", number: 1 }]; //set the tops of each stack
 
-  const deck = <Deck size={52} updateTopOfStacks={updateTopOfStacks} topOfStacks={topOfStacks} />;
-
   function updateTopOfStacks(stackID) {
     const stackToUpdate = topOfStacks.find(stack => stack.id === stackID);
 
@@ -41,6 +41,21 @@ function App() {
     stackToUpdate.number += 1;
   }
     } console.log(topOfStacks);
+
+  const droppableAreas = [
+    {id: 't1', gridCol: 1, gridRow: 2, spanRows: 12},
+    {id: 't2', gridCol: 2, gridRow: 2, spanRows: 12},
+    {id: 't3', gridCol: 3, gridRow: 2, spanRows: 12},
+    {id: 't4', gridCol: 4, gridRow: 2, spanRows: 12},
+    {id: 't5', gridCol: 5, gridRow: 2, spanRows: 12},
+    {id: 't6', gridCol: 6, gridRow: 2, spanRows: 12},
+    {id: 't7', gridCol: 7, gridRow: 2, spanRows: 12},
+    {id: 'f1', gridCol: 4, gridRow: 1},
+    {id: 'f2', gridCol: 5, gridRow: 1},
+    {id: 'f3', gridCol: 6, gridRow: 1},
+    {id: 'f4', gridCol: 7, gridRow: 1}
+  ]
+  
 
   return (
     <>
@@ -56,16 +71,27 @@ function App() {
       {/*Header and logo}*/}
       
       {/* Table grid and cards */}
+      
       <div className="tableGrid">
+      {droppableAreas.map((area) => (
+        <div
+          key={area.id}
+          className="drop-area"
+          style={{ 
+            gridColumn: `${area.gridColumn}`,
+            gridRow: `${area.gridRow}${area.id.includes('f') ? ' / span ' + area.spanRows : ''}`,
+            zIndex: '30'
+          }}></div>))}
         <img src = {alienFoundation} style={{ gridColumn: '4', gridRow: '1' , marginBottom : "10px", justifySelf: "center", zIndex: "0"}} />
         <img src = {astronautFoundation} style={{ gridColumn: '5', gridRow: '1', justifySelf: "center", zIndex: "0"}} />
         <img src = {starFoundation} style={{ gridColumn: '6', gridRow: '1', justifySelf: "center", zIndex: "0"}} />
         <img src = {moonFoundation} style={{ gridColumn: '7', gridRow: '1', justifySelf: "center", zIndex: "0"}} />
-        {deck}
+        <Deck size={52} droppableAreas={droppableAreas} updateTopOfStacks={updateTopOfStacks} topOfStacks={topOfStacks} />
         {}
-
+       
         {/* <Table></Table>  */}
-      </div>
+      </div> 
+    
     </>
   );
 }
