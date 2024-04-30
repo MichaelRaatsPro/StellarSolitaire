@@ -160,7 +160,7 @@ function Card(props) {
       }
     }
   });
-
+//bruh
   
   const [{isOver, canDrop}] = useDrop({
     accept:'CARD',
