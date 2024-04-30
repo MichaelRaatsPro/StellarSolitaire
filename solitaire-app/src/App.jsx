@@ -82,7 +82,7 @@ function App() {
             gridRow: `${area.gridRow}${area.id.includes('f') ? ' / span ' + area.spanRows : ''}`,
             zIndex: '30'
           }}></div>))}
-        <img src = {alienFoundation} style={{ gridColumn: '4', gridRow: '1' , marginBottom : "10px", justifySelf: "center", zIndex: "0", minHeight: "100%"}} />
+        <img src = {alienFoundation} style={{ gridColumn: '4', gridRow: '1' , paddingBottom : "20px", justifySelf: "center", zIndex: "0", minHeight: "100%"}} />
         <img src = {astronautFoundation} style={{ gridColumn: '5', gridRow: '1', justifySelf: "center", zIndex: "0"}} />
         <img src = {starFoundation} style={{ gridColumn: '6', gridRow: '1', justifySelf: "center", zIndex: "0"}} />
         <img src = {moonFoundation} style={{ gridColumn: '7', gridRow: '1', justifySelf: "center", zIndex: "0"}} />
