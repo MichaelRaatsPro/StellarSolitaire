@@ -2,7 +2,7 @@
 import logo from "./images/alien.svg";
 import {useDrag, useDrop, DndProvider } from "react-dnd";
 import {HTML5Backend} from "react-dnd-html5-backend";
-import Table from "./components/Table";
+// import Table from "./components/Table";
 import React, { useState } from 'react';
 import './App.css';
 import Card from "./components/Card";
